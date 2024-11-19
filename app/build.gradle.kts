@@ -43,6 +43,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.appcompat)
 
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.coil)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     testImplementation(libs.junit)
