@@ -12,10 +12,11 @@ import com.mogun.mediasearchapp.list.viewholder.VideoViewHolder
 import com.mogun.mediasearchapp.model.ImageItem
 import com.mogun.mediasearchapp.model.ListItem
 
-class ListAdapter: ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
+class ListAdapter(private val itemHandler: ItemHandler? = null) :
+    ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun getItemViewType(position: Int): Int {
-        return if(getItem(position) is ImageItem) {
+        return if (getItem(position) is ImageItem) {
             IMAGE_TYPE
         } else {
             VIDEO_TYPE
@@ -27,10 +28,10 @@ class ListAdapter: ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
         viewType: Int
     ): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return if(viewType == IMAGE_TYPE) {
-            ImageViewHolder(ItemImageBinding.inflate(inflater, parent, false))
+        return if (viewType == IMAGE_TYPE) {
+            ImageViewHolder(ItemImageBinding.inflate(inflater, parent, false), itemHandler)
         } else {
-            VideoViewHolder(ItemVideoBinding.inflate(inflater, parent, false))
+            VideoViewHolder(ItemVideoBinding.inflate(inflater, parent, false), itemHandler)
         }
     }
 
@@ -39,7 +40,7 @@ class ListAdapter: ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
         position: Int
     ) {
         val item = getItem(position)
-        if(getItemViewType(position) == IMAGE_TYPE) {
+        if (getItemViewType(position) == IMAGE_TYPE) {
             (holder as ImageViewHolder).bind(item)
         } else {
             (holder as VideoViewHolder).bind(item)

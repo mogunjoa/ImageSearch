@@ -48,6 +48,13 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.coil)
 
+    implementation(libs.adapter.rxjava3)
+    implementation(libs.rxandroid)
+    implementation(libs.rxkotlin)
+
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.fragment.ktx)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     testImplementation(libs.junit)

@@ -7,6 +7,10 @@
             name="item"
             type="com.mogun.mediasearchapp.model.VideoItem" />
 
+        <variable
+            name="handler"
+            type="com.mogun.mediasearchapp.list.ItemHandler" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:date="@{item.dateTime}"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/thumbnailImageView"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -75,7 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:favorite="@{item.favorite}"
-            app:layout_constraintTop_toBottomOf="parent"
+            android:onClick="@{() -> handler.onClickFavorite(item)}"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
