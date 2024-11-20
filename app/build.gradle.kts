@@ -37,9 +37,16 @@ android {
     buildFeatures {
         dataBinding = true
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
+    implementation(libs.mockito.inline)
+    implementation(libs.androidx.core.testing)
+
+
     implementation(libs.material)
     implementation(libs.androidx.appcompat)
 
